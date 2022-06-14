@@ -65,7 +65,7 @@ repositories {
 }
 
 dependencies {
-    implementation "com.github.YarikSOffice:lingver:1.3.0"
+    implementation "com.github.HombreTech:lingver:1.3.1"
 }
 ```
 
