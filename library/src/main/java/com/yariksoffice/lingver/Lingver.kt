@@ -54,8 +54,8 @@ class Lingver private constructor(
      * and variant values.
      */
     @JvmOverloads
-    fun setLocale(context: Context, language: String, country: String = "", variant: String = "") {
-        setLocale(context, Locale(language, country, variant))
+    fun setLocale(context: Context, language: String, country: String = "", variant: String = ""): Context {
+        return setLocale(context, Locale(language, country, variant))
     }
 
     /**
@@ -67,9 +67,9 @@ class Lingver private constructor(
      * <p>Note that any call to [setLocale] stops following the system locale and resets
      * [isFollowingSystemLocale] setting.
      */
-    fun setLocale(context: Context, locale: Locale) {
+    fun setLocale(context: Context, locale: Locale): Context  {
         store.setFollowSystemLocale(false)
-        persistAndApply(context, locale)
+        return persistAndApply(context, locale)
     }
 
     /**
@@ -131,13 +131,13 @@ class Lingver private constructor(
         persistAndApply(application, locale)
     }
 
-    private fun persistAndApply(context: Context, locale: Locale) {
+    private fun persistAndApply(context: Context, locale: Locale): Context {
         store.persistLocale(locale)
-        delegate.applyLocale(context, locale)
+        return delegate.applyLocale(context, locale)
     }
 
-    private fun applyLocale(context: Context) {
-        delegate.applyLocale(context, store.getLocale())
+    private fun applyLocale(context: Context): Context {
+        return delegate.applyLocale(context, store.getLocale())
     }
 
     private fun processConfigurationChange(context: Context, config: Configuration) {
