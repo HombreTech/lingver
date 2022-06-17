@@ -26,6 +26,8 @@ package com.yariksoffice.lingver.store
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Resources
+import com.yariksoffice.lingver.getResources
 import org.json.JSONObject
 import java.util.Locale
 
@@ -52,6 +54,8 @@ class PreferenceLocaleStore @JvmOverloads constructor(
             defaultLocale
         }
     }
+
+    override fun getLocaleResources(context: Context): Resources = getLocale().getResources(context)
 
     override fun persistLocale(locale: Locale) {
         val json = JSONObject().apply {

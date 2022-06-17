@@ -65,7 +65,7 @@ repositories {
 }
 
 dependencies {
-    implementation "com.github.HombreTech:lingver:1.3.3"
+    implementation "com.github.HombreTech:lingver:1.3.4"
 }
 ```
 

@@ -24,6 +24,9 @@
 
 package com.yariksoffice.lingver.store
 
+import android.content.Context
+import android.content.res.Resources
+import com.yariksoffice.lingver.getResources
 import java.util.Locale
 
 /**
@@ -38,6 +41,8 @@ class InMemoryLocaleStore : LocaleStore {
     private var isFollowingSystemLocale = false
 
     override fun getLocale(): Locale = locale
+
+    override fun getLocaleResources(context: Context): Resources = locale.getResources(context)
 
     override fun persistLocale(locale: Locale) {
         this.locale = locale

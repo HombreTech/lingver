@@ -80,6 +80,13 @@ class Lingver private constructor(
     }
 
     /**
+     * Returns the localized [Resources].
+     */
+    fun getLocaleResources(context: Context): Resources {
+        return store.getLocaleResources(context)
+    }
+
+    /**
      * Returns a language code which is a part of the active [Locale].
      *
      * Deprecated ISO language codes "iw", "ji", and "in" are converted

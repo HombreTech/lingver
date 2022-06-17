@@ -54,8 +54,7 @@ internal fun Activity.resetTitle() {
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-internal fun Locale.getResources(context: Context): Resources? {
+fun Locale.getResources(context: Context): Resources {
     var conf = context.resources.configuration
     conf = Configuration(conf)
     conf.setLocale(this)
