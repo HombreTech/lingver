@@ -25,10 +25,13 @@
 package com.yariksoffice.lingver
 
 import android.app.Activity
+import android.content.Context
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.GET_META_DATA
 import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Build
+import androidx.annotation.RequiresApi
 import java.util.Locale
 
 @Suppress("DEPRECATION")
@@ -49,4 +52,13 @@ internal fun Activity.resetTitle() {
     } catch (e: PackageManager.NameNotFoundException) {
         e.printStackTrace()
     }
+}
+
+@RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+internal fun Locale.getResources(context: Context): Resources? {
+    var conf = context.resources.configuration
+    conf = Configuration(conf)
+    conf.setLocale(this)
+    val localizedContext = context.createConfigurationContext(conf)
+    return localizedContext.resources
 }

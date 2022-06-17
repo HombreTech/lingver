@@ -36,12 +36,12 @@ internal class UpdateLocaleDelegate {
         val appContext = context.applicationContext
         return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
             if (context != appContext) {
-                updateResources(context.applicationContext, locale)
+                updateResources(appContext, locale)
             }
             updateResources(context, locale)
         } else {
             if (context != appContext) {
-                updateResourcesLegacy(context.applicationContext, locale)
+                updateResourcesLegacy(appContext, locale)
             }
             updateResourcesLegacy(context, locale)
         }
