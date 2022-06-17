@@ -33,10 +33,18 @@ import java.util.Locale
 internal class UpdateLocaleDelegate {
 
     internal fun applyLocale(context: Context, locale: Locale): Context {
-        return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N)
+        val appContext = context.applicationContext
+        return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
+            if (context != appContext) {
+                updateResources(context.applicationContext, locale)
+            }
             updateResources(context, locale)
-        else
+        } else {
+            if (context != appContext) {
+                updateResourcesLegacy(context.applicationContext, locale)
+            }
             updateResourcesLegacy(context, locale)
+        }
     }
 
     @TargetApi(Build.VERSION_CODES.N)
